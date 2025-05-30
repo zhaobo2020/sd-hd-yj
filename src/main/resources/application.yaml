@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: sd_hd
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      indent_output: true
+    datatype:
+      jsr310:
+        enabled: true
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      # 单个文件最大限制 50MB
+      max-file-size: 50MB
+      # 请求总大小限制 100MB（支持多个文件上传时）
+      max-request-size: 100MB
+
+# application.yml
+feign:
+  client:
+    config:
+      SkCountFeignClient:
+        loggerLevel: full
+      default:
+        connectTimeout: 5000
+        readTimeout: 30000
+        loggerLevel: basic
+  okhttp:
+    enabled: true # 启用OKHttp连接池
+# application.yml
+mybatis-plus:
+  type-aliases-package: com.sl.water.entity
+  global-config:
+    banner: false
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+task:
+  r_pptn:
+    cron: 0 0/3 * * * *
+    duration: 1
+  yb_pptn:
+    cron: 0 0/30 * * * *
+  r_rsvr:
+    cron: 0 0/30 * * * *
+  r_river:
+    cron: 0 0/30 * * * *
+file:
+  dirPath: D:/a/
+sk:
+  api:
+    base-url: http://127.0.0.1:7777
+

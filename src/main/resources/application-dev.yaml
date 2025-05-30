@@ -1,0 +1,68 @@
+server:
+  port: 9933
+
+spring:
+  cache:
+    type: redis  # 注意是 spring.cache 而不是 cache
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 1
+      timeout: 60000ms  # 超时时间
+      lettuce:
+        pool:
+          max-active: 10
+          min-idle: 5
+  datasource:
+    mysql:
+      url: jdbc:mysql://101.201.48.61:3306/sd_hd?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      username: sh_hd
+      password: KsRLkHK75CDDPh8r
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    #    postgresql:
+    #      url: jdbc:postgresql://127.0.0.1:5432/rdt  http://1.92.115.18/
+    #      username: postgres
+    #      password: 1342nian
+    #      driver-class-name: org.postgresql.Driver
+    # Hikari 默认被启用，禁用它
+    hikari:
+      enabled: false
+    # Druid 特有的配置项
+    type: com.alibaba.druid.pool.DruidDataSource # 确保使用的是 Druid 数据源
+    druid:
+      initial-size: 5  # 初始连接池大小
+      min-idle: 5       # 最小空闲连接数
+      max-active: 20    # 最大连接数
+      max-wait: 60000   # 获取连接的最大等待时间（毫秒）
+      validation-query: SELECT 1 FROM DUAL  # 验证连接是否有效的SQL查询语句
+      test-on-borrow: false  # 取连接时检测是否有效
+      test-while-idle: true  # 连接空闲时检测是否有效
+      time-between-eviction-runs-millis: 60000  # 连接回收间隔（毫秒）
+      min-evictable-idle-time-millis: 300000     # 连接最小空闲时间（毫秒）
+      pool-prepared-statements: true            # 开启PSCache
+      max-pool-prepared-statement-per-connection-size: 20  # 每个连接上PSCache的大小
+      filters: stat,wall,slf4j  # 配置StatFilter和WallFilter
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000  # Druid监控统计功能的配置属性
+      # 修改监控配置
+      webStatFilter:
+        enabled: true
+      statViewServlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: 123456
+        allow: ""  # 允许所有访问
+  rabbitmq:
+    host: localhost  # RabbitMQ 服务的主机
+    port: 5672      # RabbitMQ 服务的端口
+    username: guest  # 用户名
+    password: guest  # 密码
+    virtual-host: / # 虚拟主机，默认 /
+  security:
+    user:
+      name: adminzb
+      password: myCustomPassword
+
+
+

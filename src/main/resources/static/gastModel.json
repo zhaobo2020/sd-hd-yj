@@ -1,0 +1,38 @@
+[
+  {
+    "abbreviation": "cwh",
+    "fullName": "刺猬河",
+    "model": "刺猬河",
+    "location": 1
+  },
+  {
+    "abbreviation": "dsh",
+    "fullName": "大石河",
+    "model": "大石河",
+    "location": 2
+  },
+  {
+    "abbreviation": "xqh",
+    "fullName": "小清河",
+    "model": "小清河",
+    "location": 3
+  },
+  {
+    "abbreviation": "lbh",
+    "fullName": "哑叭河",
+    "model": "哑叭河",
+    "location": 4
+  },
+  {
+    "abbreviation": "bjmh",
+    "fullName": "北拒马河",
+    "model": "北拒马河",
+    "location": 5
+  },
+  {
+    "abbreviation": "dnsk",
+    "fullName": "大宁水库",
+    "model": "大宁水库",
+    "location": 6
+  }
+]
